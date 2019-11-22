@@ -1,0 +1,71 @@
+name: electron-wokiosk
+version: '0.1wokiosk'
+summary: Hello World Electron app
+description: |
+  Simple Hello World Electron app as an example
+base: core18
+confinement: strict
+grade: devel
+
+apps:
+  electron-wokiosk:
+    command: desktop-launch "$SNAP/electron-helloworld/electron-quick-start"
+    plugs:
+    - browser-sandbox
+    - network
+    - network-bind
+    - opengl
+    - pulseaudio
+    - wayland
+    - x11
+
+plugs:
+  browser-sandbox:
+    interface: browser-support
+    allow-sandbox: true
+
+parts:
+  electron-helloworld:
+    plugin: nodejs
+    source: https://github.com/electron/electron-quick-start.git
+    after: [desktop-gtk3]
+    stage-packages:
+    - libasound2
+    - libgconf-2-4
+    - libnss3
+    - libx11-xcb1
+    - libxss1
+    - libxtst6
+
+    build-packages:
+    - nodejs
+    - npm
+    - unzip
+
+  # Adapted from snapcraft-desktop-helpers https://github.com/ubuntu/snapcraft-desktop-helpers/blob/master/snapcraft.yaml#L183
+  desktop-gtk3:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: gtk
+    plugin: make
+    make-parameters: ["FLAVOR=gtk3"]
+    build-packages:
+      - build-essential
+      - libgtk-3-dev
+    stage-packages:
+      - libxkbcommon0  # XKB_CONFIG_ROOT
+      - ttf-ubuntu-font-family
+      - dmz-cursor-theme
+      - light-themes
+      - adwaita-icon-theme
+      - gnome-themes-standard
+      - shared-mime-info
+      - libgtk-3-0
+      - libgdk-pixbuf2.0-0
+      - libglib2.0-bin
+      - libgtk-3-bin
+      - unity-gtk3-module
+      - libappindicator3-1
+      - locales-all
+      - xdg-user-dirs
+      - ibus-gtk3
+      - libibus-1.0-5    
