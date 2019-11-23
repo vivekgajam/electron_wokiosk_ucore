@@ -1,4 +1,4 @@
-name: electron-wokiosk
+name: electron-hello-world-kiosk
 version: '0.1'
 summary: Hello World Electron app
 description: |
@@ -8,8 +8,8 @@ confinement: strict
 grade: devel
 
 apps:
-  electron-wokiosk:
-    command: desktop-launch "/snap/electron-wokiosk/x1"
+  electron-hello-world-kiosk:
+    command: desktop-launch "$SNAP/electron-helloworld/electron-quick-start"
     plugs:
     - browser-sandbox
     - network
@@ -68,4 +68,4 @@ parts:
       - locales-all
       - xdg-user-dirs
       - ibus-gtk3
-      - libibus-1.0-5    
+      - libibus-1.0-5  
