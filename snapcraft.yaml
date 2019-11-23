@@ -35,6 +35,7 @@ parts:
           "x86_64-linux-gnu") ARCH="x64";;
           "arm-linux-gnueabihf") ARCH="armv7l";;
           "aarch64-linux-gnu") ARCH="arm64";;
+          "arm-linux-gnueabihf") ARCH="armhf";;
           *) echo "ERROR: electron does not support the '$SNAPCRAFT_ARCH_TRIPLET' architecture" && exit 1;;
         esac
         npm install electron-packager &&
