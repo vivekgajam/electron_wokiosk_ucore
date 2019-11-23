@@ -9,7 +9,7 @@ grade: devel
 
 apps:
   electron-wokiosk:
-    command: desktop-launch "/snap/electron-wokiosk/x1"
+    command: desktop-launch "$SNAP/electron-helloworld/electron-quick-start"
     plugs:
     - browser-sandbox
     - network
