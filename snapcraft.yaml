@@ -29,7 +29,7 @@ parts:
     plugin: nodejs
     source: https://github.com/electron/electron-quick-start.git
     after: [desktop-gtk3]
-        override-build: |
+    override-build: |
         case $SNAPCRAFT_ARCH_TRIPLET in
           "i386-linux-gnu") ARCH="ia32";;
           "x86_64-linux-gnu") ARCH="x64";;
